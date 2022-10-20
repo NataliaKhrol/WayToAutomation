@@ -28,22 +28,22 @@ public class WayToAutomationTest {
         ChromeOptions options = new ChromeOptions();
         // options.setHeadless(true);
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        WebDriver browser = new ChromeDriver();
-        browser.manage().window().maximize();
-        browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        browser.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
 
-        browser.findElement(FIRST_NAME).sendKeys("Rada");
-        browser.findElement(LAST_NAME).sendKeys("RadaR");
-        browser.findElement(MARRIED_STATUS).click();
-        browser.findElement(HOBBY_READING).click();
-        browser.findElement(PHONE_ENTRY).sendKeys("+375 00089649");
-        browser.findElement(LOGIN_ENTRY).sendKeys("Radomir");
-        browser.findElement(EMAIL_ENTRY).sendKeys("rada@sandbox.com");
-        browser.findElement(PASSWORD_ENTRY).sendKeys("Rada789");
-        browser.findElement(PASSWORD_CHECK).sendKeys("Rada789");
-        browser.findElement(SUBMIT_BUTTON).click();
-        if (browser.findElements(By.xpath("//label[contains(text(),'This field is required.')]")).size() == 0) {
+        driver.findElement(FIRST_NAME).sendKeys("Rada");
+        driver.findElement(LAST_NAME).sendKeys("RadaR");
+        driver.findElement(MARRIED_STATUS).click();
+        driver.findElement(HOBBY_READING).click();
+        driver.findElement(PHONE_ENTRY).sendKeys("+375 00089649");
+        driver.findElement(LOGIN_ENTRY).sendKeys("Radomir");
+        driver.findElement(EMAIL_ENTRY).sendKeys("rada@sandbox.com");
+        driver.findElement(PASSWORD_ENTRY).sendKeys("Rada789");
+        driver.findElement(PASSWORD_CHECK).sendKeys("Rada789");
+        driver.findElement(SUBMIT_BUTTON).click();
+        if (driver.findElements(By.xpath("//label[contains(text(),'This field is required.')]")).size() == 0) {
             System.out.println("SUCCESSFUL REGISTRATION");
         }
     }
@@ -54,22 +54,22 @@ public class WayToAutomationTest {
         ChromeOptions options = new ChromeOptions();
         // options.setHeadless(true);
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        WebDriver browser = new ChromeDriver();
-        browser.manage().window().maximize();
-        browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        browser.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
 
-        browser.findElement(FIRST_NAME).sendKeys("Rada");
-        browser.findElement(LAST_NAME).sendKeys("RadaR");
-        browser.findElement(MARRIED_STATUS).click();
-        browser.findElement(HOBBY_READING).click();
-        browser.findElement(PHONE_ENTRY).sendKeys(" ");
-        browser.findElement(LOGIN_ENTRY).sendKeys("Radomir");
-        browser.findElement(EMAIL_ENTRY).sendKeys(" ");
-        browser.findElement(PASSWORD_ENTRY).sendKeys("Rada789");
-        browser.findElement(PASSWORD_CHECK).sendKeys("Rada789");
-        browser.findElement(SUBMIT_BUTTON).click();
-        boolean registrationFailed = browser.findElement(By.xpath("//label[contains(text(),'This field is required.')]")).isDisplayed();
+        driver.findElement(FIRST_NAME).sendKeys("Rada");
+        driver.findElement(LAST_NAME).sendKeys("RadaR");
+        driver.findElement(MARRIED_STATUS).click();
+        driver.findElement(HOBBY_READING).click();
+        driver.findElement(PHONE_ENTRY).sendKeys(" ");
+        driver.findElement(LOGIN_ENTRY).sendKeys("Radomir");
+        driver.findElement(EMAIL_ENTRY).sendKeys(" ");
+        driver.findElement(PASSWORD_ENTRY).sendKeys("Rada789");
+        driver.findElement(PASSWORD_CHECK).sendKeys("Rada789");
+        driver.findElement(SUBMIT_BUTTON).click();
+        boolean registrationFailed = driver.findElement(By.xpath("//label[contains(text(),'This field is required.')]")).isDisplayed();
         assertTrue(registrationFailed, "Registration passed but the required fields were left unfilled");
     }
 }
