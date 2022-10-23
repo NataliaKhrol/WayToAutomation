@@ -10,7 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
 
-public class WayToAutomationTest {
+public class WayToAutomationTest extends BaseTest {
+
+    public static final String BASE_URL = "https://www.way2automation.com/way2auto_jquery/registration.php#load_box";
     private final By FIRST_NAME = By.name("name");
     private final By LAST_NAME = By.xpath("(//input[@type=\"text\"])[2]");
     private final By MARRIED_STATUS = By.name("m_status");
@@ -25,13 +27,7 @@ public class WayToAutomationTest {
     @Test
     public void correctRegistration() {
 
-        ChromeOptions options = new ChromeOptions();
-        // options.setHeadless(true);
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
+        driver.get(BASE_URL);
 
         driver.findElement(FIRST_NAME).sendKeys("Rada");
         driver.findElement(LAST_NAME).sendKeys("RadaR");
@@ -51,13 +47,7 @@ public class WayToAutomationTest {
     @Test
     public void emptyFields() {
 
-        ChromeOptions options = new ChromeOptions();
-        // options.setHeadless(true);
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://www.way2automation.com/way2auto_jquery/registration.php#load_box");
+        driver.get(BASE_URL);
 
         driver.findElement(FIRST_NAME).sendKeys("Rada");
         driver.findElement(LAST_NAME).sendKeys("RadaR");
