@@ -1,5 +1,3 @@
-package my.example;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,11 +19,10 @@ public class BaseTest {
         if (browser.equals("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-           // options.setHeadless(true);
+            // options.setHeadless(true);
             driver = new ChromeDriver(options);
         }
         testContext.setAttribute("driver", driver);
-
     }
 
     @AfterMethod(alwaysRun = true)
