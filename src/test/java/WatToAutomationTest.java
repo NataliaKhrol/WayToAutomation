@@ -1,16 +1,9 @@
-package my.example;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
 
-public class WayToAutomationTest extends BaseTest {
+public class WatToAutomationTest extends BaseTest{
 
     public static final String BASE_URL = "https://www.way2automation.com/way2auto_jquery/registration.php#load_box";
     private final By FIRST_NAME = By.name("name");
