@@ -1,9 +1,12 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertTrue;
+import java.util.List;
 
-public class WatToAutomationTest extends BaseTest{
+import static org.testng.Assert.*;
+
+public class WatToAutomationTest extends BaseTest {
 
     public static final String BASE_URL = "https://www.way2automation.com/way2auto_jquery/registration.php#load_box";
     private final By FIRST_NAME = By.name("name");
@@ -16,26 +19,6 @@ public class WatToAutomationTest extends BaseTest{
     private final By PASSWORD_ENTRY = By.xpath("(//input[@name=\"password\"])[1]");
     private final By PASSWORD_CHECK = By.name("c_password");
     private final By SUBMIT_BUTTON = By.cssSelector("[value=\"submit\"]");
-
-    @Test
-    public void correctRegistration() {
-
-        driver.get(BASE_URL);
-
-        driver.findElement(FIRST_NAME).sendKeys("Rada");
-        driver.findElement(LAST_NAME).sendKeys("RadaR");
-        driver.findElement(MARRIED_STATUS).click();
-        driver.findElement(HOBBY_READING).click();
-        driver.findElement(PHONE_ENTRY).sendKeys("+375 00089649");
-        driver.findElement(LOGIN_ENTRY).sendKeys("Radomir");
-        driver.findElement(EMAIL_ENTRY).sendKeys("rada@sandbox.com");
-        driver.findElement(PASSWORD_ENTRY).sendKeys("Rada789");
-        driver.findElement(PASSWORD_CHECK).sendKeys("Rada789");
-        driver.findElement(SUBMIT_BUTTON).click();
-        if (driver.findElements(By.xpath("//label[contains(text(),'This field is required.')]")).size() == 0) {
-            System.out.println("SUCCESSFUL REGISTRATION");
-        }
-    }
 
     @Test
     public void emptyFields() {
@@ -54,5 +37,24 @@ public class WatToAutomationTest extends BaseTest{
         driver.findElement(SUBMIT_BUTTON).click();
         boolean registrationFailed = driver.findElement(By.xpath("//label[contains(text(),'This field is required.')]")).isDisplayed();
         assertTrue(registrationFailed, "Registration passed but the required fields were left unfilled");
+    }
+
+    @Test
+    public void correctRegistration() {
+
+        driver.get(BASE_URL);
+
+        driver.findElement(FIRST_NAME).sendKeys("Rada");
+        driver.findElement(LAST_NAME).sendKeys("RadaR");
+        driver.findElement(MARRIED_STATUS).click();
+        driver.findElement(HOBBY_READING).click();
+        driver.findElement(PHONE_ENTRY).sendKeys("+375 00089649");
+        driver.findElement(LOGIN_ENTRY).sendKeys("Radomir");
+        driver.findElement(EMAIL_ENTRY).sendKeys("rada@sandbox.com");
+        driver.findElement(PASSWORD_ENTRY).sendKeys("Rada789");
+        driver.findElement(PASSWORD_CHECK).sendKeys("Rada789");
+        driver.findElement(SUBMIT_BUTTON).click();
+        List<WebElement> errorElements = driver.findElements(By.className("error_p"));
+        assertTrue(errorElements.isEmpty(), "Registration failed");
     }
 }
