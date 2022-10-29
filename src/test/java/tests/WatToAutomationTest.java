@@ -17,8 +17,8 @@ public class WatToAutomationTest extends BaseTest {
     @Test
     public void entryAllFields() {
 
-        new BasePage(driver).open();
-        new RegistrationPage(driver).enterFirstName("Rada")
+        basePage.open();
+        registrationPage.enterFirstName("Rada")
                 .enterLastName("RadaR")
                 .marriedStatus()
                 .enterHobby()
@@ -27,16 +27,14 @@ public class WatToAutomationTest extends BaseTest {
                 .enterEmail("rada@sandbox.com")
                 .enterPassword("Rada789")
                 .submitRegistration();
-        List<WebElement> errorElements = driver.findElements(By.className("error_p"));
-        assertTrue(errorElements.isEmpty(), "Registration failed");
-
+        assertTrue(registrationPage.errors(), "Registration failed");
     }
 
     @Test
     public void emptyFields() {
 
-        new BasePage(driver).open();
-        new RegistrationPage(driver).enterFirstName("Rada")
+        basePage.open();
+        registrationPage.enterFirstName("Rada")
                 .enterLastName("RadaR")
                 .marriedStatus()
                 .enterHobby()
@@ -45,7 +43,6 @@ public class WatToAutomationTest extends BaseTest {
                 .enterEmail("")
                 .enterPassword("Rada789")
                 .submitRegistration();
-        boolean registrationFailed = driver.findElement(By.xpath("//label[contains(text(),'This field is required.')]")).isDisplayed();
-        assertTrue(registrationFailed, "Registration passed but the required fields were left unfilled");
+        assertTrue(registrationPage.shouldBeFilled(), "Registration passed but the required fields were left unfilled");
     }
 }

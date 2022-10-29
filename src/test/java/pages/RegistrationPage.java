@@ -2,9 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
@@ -70,4 +67,16 @@ public class RegistrationPage extends BasePage {
         driver.findElement(SUBMIT_BUTTON).click();
         return this;
     }
+
+    public boolean errors() {
+        boolean errorElements = driver.findElements(By.className("error_p")).isEmpty();
+        return errorElements;
+    }
+
+    public boolean shouldBeFilled() {
+        boolean registrationFailed = driver.findElement(By.xpath("//label[contains(text(),'This field is required.')]")).isDisplayed();
+        return registrationFailed;
+    }
+
+
 }
