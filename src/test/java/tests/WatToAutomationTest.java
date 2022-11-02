@@ -14,7 +14,7 @@ import static org.testng.Assert.*;
 public class WatToAutomationTest extends BaseTest {
     public static final String BASE_URL = "https://www.way2automation.com/way2auto_jquery/registration.php#load_box";
 
-    @Test
+    @Test(description = "Checking the users authorization")
     public void entryAllFields() {
 
         basePage.open();
@@ -30,7 +30,7 @@ public class WatToAutomationTest extends BaseTest {
         assertTrue(registrationPage.errors(), "Registration failed");
     }
 
-    @Test
+    @Test(description = "Checking the authorization when some fields are left unfilled")
     public void emptyFields() {
 
         basePage.open();
