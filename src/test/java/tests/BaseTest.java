@@ -5,13 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import pages.BasePage;
 import pages.RegistrationPage;
 
+@Listeners(TestListener.class)
 public class BaseTest {
     WebDriver driver;
     RegistrationPage registrationPage;
@@ -21,14 +19,14 @@ public class BaseTest {
     @BeforeMethod(description = "Opening the browser")
     // 1. Открыть браузер
 
-    public void setup(@Optional("chrome") String browser, ITestContext testContext) {
+    public void setup(@Optional("chrome") String browser, ITestContext context) {
         if (browser.equals("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
              options.setHeadless(true);
             driver = new ChromeDriver(options);
         }
-        testContext.setAttribute("driver", driver);
+        context.setAttribute("driver", driver);
 
         registrationPage = new RegistrationPage(driver);
         basePage = new BasePage(driver);
